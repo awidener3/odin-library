@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <title>Odin's Library</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1>Odin's Library</h1>
+        </header>
+        
+        <div class="add-book">
+            <button class="add-book-btn" onclick="turnOnOverlay()">+</button>
+            <p class="add-book-txt">Add Book...</p>
+        </div>
+
+        <div id="overlay" class="overlay">
+            <div class="form-container">
+                <div class="icon">
+                    <img class="book-icon" src="images/book-icon.png"/>
+                </div>
+                <form id="input-form" action="">
+                    <span class="close" onclick="turnOffOverlay()">&times;</span>
+                    <label for="book-title">Book Title</label>
+                    <input type="text" placeholder="Enter a book title..." required>
+
+                    <label for="book-author">Author</label>
+                    <input type="text" placeholder="Enter an author..." required>
+
+                    <label for="book-pages">Pages</label>
+                    <input type="number" placeholder="0" min="0" required>
+
+                    <label for="book-status">Status</label>
+                    <select name="status-select" id="" required>
+                        <option value="read">Read</option>
+                        <option value="in-progress">In-Progress</option>
+                        <option value="not read">Not Read</option>
+                    </select>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>  
+        </div>
+
+        <div class="book-container">
+            <!-- <div class="card">
+                <div class="check">✓</div>
+                <img class="card-book" src="images/blank-book.png" alt="A blank book">
+                <span class="card-hover read">
+                    <div class="card-title">The Hobbit</div>
+                    <div class="card-author">J.R.R. Tolkien</div>
+                    <div class="card-pages">297 Pages</div>
+                </span> 
+            </div>
+
+            <div class="card">
+                <div class="check">✓</div>
+                <img class="card-book" src="images/blank-book.png" alt="A blank book">
+                <span class="card-hover in-progress">
+                    <div class="card-title">Dune</div>
+                    <div class="card-author">Frank Hubert</div>
+                    <div class="card-pages">412 Pages</div>
+                </span> 
+            </div>
+
+            <div class="card">
+                <div class="check">✓</div>
+                <img class="card-book" src="images/blank-book.png" alt="A blank book">
+                <span class="card-hover not-read">
+                    <div class="card-title">Dune</div>
+                    <div class="card-author">Frank Hubert</div>
+                    <div class="card-pages">412 Pages</div>
+                </span> 
+            </div> -->
+        </div>
+
+        <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+        <footer class="footer">
+            <p>coded by Alex Widener &copy; 2021</p>
+        </footer>
+    </div>  
+
+    <script src="app.js"></script>
+</body>
+</html>

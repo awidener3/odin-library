@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Jim+Nightshade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* MAIN */
+
+body {
+    background-color: rgb(23, 23, 23);
+    color: white;
+    font-family: 'Source Serif Pro', serif;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 20px 10px;
+}
+
+header > h1 {
+    text-align: center;
+    font-family: 'Jim Nightshade', cursive;
+    font-size: 4rem;
+}
+
+/* ADD BOOK */
+
+.add-book {
+    display: flex;
+    margin-left: 20px;
+}
+
+.add-book-btn {
+    border: 2px solid white;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 99vh;
+    transition: all 0.2s;
+}
+
+.add-book-txt {
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
+/* BOOK INPUT FORM */
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    /* cursor: pointer; */
+    z-index: 9;
+}
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 580px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #222;
+    z-index: 9;
+}
+
+#input-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.book-icon {
+    width: 60%;
+}
+
+label {
+    margin-top: 4px;
+    font-size: 1.3rem;
+}
+
+input[type=text],
+input[type=number],
+select {
+    padding: 12px 10px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    color: #555;
+    font-size: 1.5rem;
+}
+
+.close:hover {
+    cursor: pointer;
+    color: #999;
+}
+
+button[type=submit] {
+    padding: 12px 20px;
+    margin-top: 16px;
+    border-radius: 4px;
+}
+
+button[type=submit]:hover {
+    background-color:rgb(16, 166, 16);
+    color: white;
+    border: 2px solid rgb(16, 166, 16);
+}
+
+/* CARD */
+
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 20px;
+    width: 200px;
+    height: 260px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+}
+
+.card-book {
+    width: 100%;
+}
+
+.check {
+    margin: 8px 0 0 8px;
+    text-align: center;
+    background-color: rgb(16, 166, 16);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    border-radius: 99vh;
+}
+
+.read {
+    border: 3px solid #10b752;
+    border-radius: 8px;
+}
+
+.in-progress {
+    border: 3px solid #b7b710;
+    border-radius: 8px;
+}
+
+.not-read {
+    border: 3px solid #484848;
+    border-radius: 8px;
+}
+
+.card-hover {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.2);
+    /* opacity: 0; */
+}
+
+.card-hover,
+.read,
+.card-title,
+.card-author,
+.card-pages {
+    transition: all 0.3s ease-in-out;
+}
+
+.card-title,
+.card-author,
+.card-pages {
+    text-align: center;
+    /* visibility: hidden; */
+}
+
+.card-title {
+    padding-top: 10px;
+    font-size: 2rem;
+}
+
+.card-author {
+    font-size: 1rem;
+}
+
+/* .card:hover div {
+    visibility: visible;
+} */
+
+.card:hover span {
+    opacity: 1;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: rgb(14, 14, 14);
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* UTILITIES */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+button {
+    background: none;
+    border: 2px solid white;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+button:hover {
+    cursor: pointer;
+    background: white;
+    color: rgb(23, 23, 23);
+}
