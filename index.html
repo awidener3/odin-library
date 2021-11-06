@@ -24,7 +24,7 @@
                 <div class="icon">
                     <img class="book-icon" src="images/book-icon.png"/>
                 </div>
-                <form id="input-form" action="">
+                <form id="input-form" autocomplete="off">
                     <span class="close" onclick="turnOffOverlay()">&times;</span>
                     <label for="book-title">Book Title</label>
                     <input id="book-title" type="text" placeholder="Enter a book title..." required>
@@ -38,7 +38,6 @@
                     <label for="book-status">Status</label>
                     <select id="book-status" name="status-select" id="" required>
                         <option value="read">Read</option>
-                        <option value="in-progress">In-Progress</option>
                         <option value="not read">Not Read</option>
                     </select>
 
@@ -47,38 +46,7 @@
             </div>  
         </div>
 
-        <div id="book-container" class="book-container">
-            <!-- <div class="card">
-                <div class="check">✓</div>
-                <img class="card-book" src="images/blank-book.png" alt="A blank book">
-                <span class="card-hover read">
-                    <div class="card-title">The Hobbit</div>
-                    <div class="card-author">J.R.R. Tolkien</div>
-                    <div class="card-pages">297 Pages</div>
-                </span> 
-            </div>
-
-            <div class="card">
-                <div class="check">✓</div>
-                <img class="card-book" src="images/blank-book.png" alt="A blank book">
-                <span class="card-hover in-progress">
-                    <div class="card-title">Dune</div>
-                    <div class="card-author">Frank Hubert</div>
-                    <div class="card-pages">412 Pages</div>
-                </span> 
-            </div>
-
-            <div class="card">
-                <div class="check">✓</div>
-                <img class="card-book" src="images/blank-book.png" alt="A blank book">
-                <span class="card-hover not-read">
-                    <div class="card-title">Dune</div>
-                    <div class="card-author">Frank Hubert</div>
-                    <div class="card-pages">412 Pages</div>
-                </span> 
-            </div> -->
-        </div>
-
+        <div id="book-container" class="book-container"></div>
         
         <footer class="footer">
             <p>coded by Alex Widener &copy; 2021</p>

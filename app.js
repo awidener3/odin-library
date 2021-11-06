@@ -17,7 +17,7 @@ let myLibrary = [
         'bookTitle': 'Dune',
         'author': 'Frank Hubert',
         'pages': 412,
-        'readStatus': 'in-progress'
+        'readStatus': 'not read'
     },
     {
         'bookTitle': 'Mistborn',
@@ -27,7 +27,7 @@ let myLibrary = [
     }
 ];
 
-/* Overlay and Form */
+/* overlay and form */
 
 function turnOnOverlay() {
     document.getElementById('overlay').style.display = 'block';
@@ -44,15 +44,15 @@ window.onclick = function(event) {
     }
 }
 
-/* Book Constructor */
-function Book() {
+/* book constructor */
+function Book(bookTitle, author, pages, readStatus) { // <-- just added parameters
     this.bookTitle = bookTitle,
     this.author = author,
     this.pages = pages,
     this.readStatus = readStatus
 };
 
-/* Book Object Creation */
+/* book object creation */
 
 function addBookToLibrary() {
     if (document.getElementById('book-title').value == '') {
@@ -64,14 +64,33 @@ function addBookToLibrary() {
     this.readStatus = document.getElementById('book-status').value;
     let newBook = new Book();
     myLibrary.push(newBook);
-    console.log(myLibrary);
     turnOffOverlay();
     updateDisplay();
 };
 
-console.log(myLibrary);
-
 /* myLibrary Display */
+
+// function updateDisplay() {
+//     bookContainer.innerHTML = '';
+//     for (let i = 0; i < myLibrary.length; i++) {
+//         const card = document.createElement('div');
+//         card.classList = 'card';
+//         card.innerHTML += 
+//             `<img class="card-book" src="images/blank-book.png" alt="A blank book">
+//             <span class="card-hover">
+//                 <div class="card-title">${myLibrary[i].bookTitle}</div>
+//                 <div class="card-author">${myLibrary[i].author}</div>
+//                 <div class="card-pages">${myLibrary[i].pages} pages</div>
+//                 <button class="card-status-button" data-read-status="${myLibrary[i].readStatus}">${myLibrary[i].readStatus}</button>
+//             </span>`
+//         if (myLibrary[i].readStatus == 'read') {
+//             card.innerHTML += `<div id="checked" class="check" onclick="toggleCheck(this)">✓</div>`;
+//         } else {
+//             card.innerHTML += `<div id="unchecked" class="blank-check" onclick="toggleCheck(this)"></div>`
+//         }
+//         bookContainer.appendChild(card);
+//     }
+// }
 
 function updateDisplay() {
     bookContainer.innerHTML = '';
@@ -84,15 +103,28 @@ function updateDisplay() {
                 <div class="card-title">${myLibrary[i].bookTitle}</div>
                 <div class="card-author">${myLibrary[i].author}</div>
                 <div class="card-pages">${myLibrary[i].pages} pages</div>
+                <div id="checkbox" class="card-status-button" data-readstatus="${myLibrary[i].readStatus}" onclick="toggleCheck(this)"></div>
+                <button class="card-status-button" data-read-status="${myLibrary[i].readStatus}">${myLibrary[i].readStatus}</button>
             </span>`
-        if (myLibrary[i].readStatus == 'read') {
-            card.innerHTML += `<div class="check">✓</div>`;
-        }
         bookContainer.appendChild(card);
     }
 }
 
 updateDisplay();
+
+/* Misc buttons */
+
+function toggleCheck(elem) {
+    if (elem.classList.contains('check')) {
+        elem.classList.remove('check');
+        elem.classList.add('blank-check');
+        elem.textContent = '';
+    } else {
+        elem.classList.remove('blank-check');
+        elem.classList.add('check');
+        elem.textContent = '✓';
+    }
+}
 
 // sample books //
 
