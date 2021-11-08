@@ -1,12 +1,13 @@
 const bookContainer = document.getElementById('book-container');
 const addBookButton = document.getElementById('add-book-btn');
 const submitButton = document.getElementById('submit');
-// const removeButton = document.getElementById('remove');
 const readButton  = document.getElementById('read-btn');
 const modal = document.getElementById('overlay');
 const closeModal = document.getElementsByClassName("close")[0];
 
-// modal functions
+
+
+// MODAL FUNCTIONS
 
 addBookButton.onclick = function() {
     document.getElementById('input-form').reset();  // reset form
@@ -28,7 +29,8 @@ submitButton.onclick = function() {
 let myLibrary = [];
 
 
-// Book Constructor & Prototypes //
+
+// BOOK OBJECT HANDLING
 
 function Book(title, author, pages, isRead) {
     this.title = title,
@@ -38,9 +40,6 @@ function Book(title, author, pages, isRead) {
 }
 
 Book.prototype.toggleRead = function() {
-    console.log('toggleRead activate!');
-    console.log(this.isRead);
-
     switch(this.isRead) {
         case 'true':
         case true:
@@ -51,10 +50,6 @@ Book.prototype.toggleRead = function() {
             this.isRead = true;
             break;
     }
-
-    console.log('toggleRead processed!');
-    console.log(this.isRead);
-    // this.isRead ? false : true;
 }
 
 function addBookToLibrary() {
@@ -67,8 +62,9 @@ function addBookToLibrary() {
     createCard(title, author, pages, isRead);
     
     myLibrary.push(newBook);
-    console.log(`current library:`);
-    console.log(myLibrary);
+
+    // save myLibrary to local storage
+    saveLibrary();
 }
 
 function deleteBook(card) {
@@ -79,9 +75,47 @@ function deleteBook(card) {
             myLibrary.splice(index, 1)
         }
     }
-    console.log(`resulting library:`);
-    console.log(myLibrary);
 }
+
+function changeRead(btn) {
+    if (btn.classList.contains('green-btn')) {
+        btn.classList.remove('green-btn');
+        btn.classList.add('red-btn');
+        btn.textContent = 'Not Read';
+    } else {
+        btn.classList.remove('red-btn');
+        btn.classList.add('green-btn');
+        btn.textContent = 'Read';
+    }
+
+    for (let book of myLibrary) {
+        if (book.title == btn.parentNode.dataset.title && book.author == btn.parentNode.dataset.author) {
+            book.toggleRead();
+        }
+    }
+}
+
+
+// LOCAL STORAGE
+
+function saveLibrary() {
+    // clear current saved library
+    
+    // take current library and JSON.stringify it.
+
+    // set it into LocalStorage
+}
+
+function loadLibrary () {
+    // after page is loaded
+
+    // find stringified library and run it through JSON.Parse
+
+    // set myLibrary to the parsed library
+}
+
+
+// BOOK CARD CREATION
 
 function createCard(title, author, pages, isRead) {
     const bookCard = document.createElement('div');
@@ -103,13 +137,8 @@ function createCard(title, author, pages, isRead) {
     removeButton.onclick = function() {
         deleteBook(this);
     }
-
     readButton.onclick = function() {
-        // console.log(this.parentNode);
-        for (let book of myLibrary) {
-            book.toggleRead();
-            
-        }
+        changeRead(this);
     }
 
     if (isRead === 'true') {
@@ -135,8 +164,20 @@ function createCard(title, author, pages, isRead) {
 }
 
 
-// // // // // 
+// // // DEBUG LAND // // // 
 
 // addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 512, true);
 // addBookToLibrary('Grit', 'Angela Duckworth', 422, false);
 // addBookToLibrary('Outliers', 'Malcom Gladwell', 143, false);
+
+
+// be sure to uncomment the console.log button in the HTML!
+
+// const consoleButton = document.getElementById('console');
+
+// consoleButton.addEventListener('click', function() {
+//     console.log('-------------');
+//     console.log('current library:');
+//     console.log(myLibrary);
+//     console.log('-------------');
+// })
