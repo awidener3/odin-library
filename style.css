@@ -144,80 +144,45 @@ button[type=submit]:hover {
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     margin: 20px;
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(44, 11, 68);
+    border-radius: 8px;
+    line-height: 1.5;
     width: 200px;
     height: 260px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: relative;
 }
 
-.card-status-button {
-    margin-top: 5px;
-    width: 120px;
-    height: 40px;
-    border-radius: 6px;
+.book-title {
+    font-size: 1.6rem;
 }
 
-.card-book {
-    width: 100%;
+.book-author {
+    font-weight: normal;
 }
 
-.check,
-.blank-check {
-    margin: 8px 0 0 8px;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    border-radius: 99vh;
-    cursor: pointer;
+.book-pages {
+    font-style: italic;
 }
 
-.check {
-    text-align: center;
-    background-color: rgb(16, 166, 16);
+.read-btn,
+.remove-btn {
+    padding: 5px;
+    border-radius: 4px;
 }
 
-.blank-check {
-    border: 1px solid gray;
-    background-color: rgba(0,0,0,0.3);
+.green-btn {
+    background-color: green;
 }
 
-.blank-check:hover {
-    background-color: rgba(0,0,0,0.1);
-}
-
-.card-hover {
-    position: absolute;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,0.2);
-}
-
-.checked {
-    width: 20px;
-    height: 20px;
-}
-
-.card-title,
-.card-author,
-.card-pages {
-    text-align: center;
-}
-
-.card-title {
-    font-size: 1.7rem;
-    font-weight: bold;
-    margin: 8px 0;
-}
-
-.card-author {
-    font-size: 1rem;
+.red-btn {
+    background-color: red;
 }
 
 /* FOOTER */

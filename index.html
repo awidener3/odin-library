@@ -10,35 +10,50 @@
 </head>
 <body>
     <div class="wrapper">
+
+        <!-- HEADER -->
+
         <header class="header">
             <h1>Odin's Library</h1>
         </header>
         
+        <!-- ADD BOOK BTN -->
+
         <div class="add-book">
-            <button class="add-book-btn" onclick="turnOnOverlay()">+</button>
+            <button id="add-book-btn" class="add-book-btn" onclick="revealOverlay()">+</button>
             <p class="add-book-txt">Add Book...</p>
         </div>
+
+        <!-- FORM MODAL -->
 
         <div id="overlay" class="overlay">
             <div class="form-container">
                 <div class="icon">
                     <img class="book-icon" src="images/book-icon.png"/>
                 </div>
+
+                <!-- BOOK INFO FORM -->
+
                 <form id="input-form" autocomplete="off">
-                    <span class="close" onclick="turnOffOverlay()">&times;</span>
+                    <span class="close">&times;</span>
+
+                    <!-- NAME -->
                     <label for="book-title">Book Title</label>
                     <input id="book-title" type="text" placeholder="Enter a book title..." required>
 
+                    <!-- AUTHOR -->
                     <label for="book-author">Author</label>
                     <input id="book-author" type="text" placeholder="Enter an author..." required>
 
+                    <!-- PAGES -->
                     <label for="book-pages">Pages</label>
                     <input id="book-pages" type="number" placeholder="0" min="0" required>
 
+                    <!-- IS READ -->
                     <label for="book-status">Status</label>
                     <select id="book-status" name="status-select" id="" required>
-                        <option value="read">Read</option>
-                        <option value="not read">Not Read</option>
+                        <option value="true">Read</option>
+                        <option value="false">Not Read</option>
                     </select>
 
                     <button id="submit" type="button" onclick="addBookToLibrary()">Submit</button>
@@ -46,8 +61,12 @@
             </div>  
         </div>
 
+        <!-- LIBRARY BOOK CONTAINER -->
+
         <div id="book-container" class="book-container"></div>
         
+
+        <!-- FOOTER -->
         <footer class="footer">
             <p>coded by Alex Widener &copy; 2021</p>
             <div class="icon-credit">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
