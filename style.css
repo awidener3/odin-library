@@ -15,6 +15,11 @@ body {
     font-family: 'Source Serif Pro', serif;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 /* HEADER */
 
 header {
@@ -35,20 +40,23 @@ header > h1 {
 .add-book {
     display: flex;
     margin-left: 20px;
+    padding-left: 20px;
 }
 
 .add-book-btn {
     border: 2px solid white;
     color: white;
-    width: 20px;
-    height: 20px;
+    padding: 1px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
     border-radius: 99vh;
     transition: all 0.2s;
 }
 
 .add-book-txt {
     margin-left: 5px;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 /* OVERLAY & BOOK FORM */
@@ -141,20 +149,20 @@ button[type=submit]:hover {
 .book-container {
     display: flex;
     flex-wrap: wrap;
+    margin: 10px;
 }
 
 .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin: 20px;
     padding: 20px;
     text-align: center;
-    background-color: rgb(44, 11, 68);
-    border-radius: 8px;
-    line-height: 1.5;
+    background-color: rgb(8, 76, 85);
+    border-radius: 6px;
     width: 200px;
-    height: 260px;
+    height: 300px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: relative;
 }
@@ -175,14 +183,19 @@ button[type=submit]:hover {
 .remove-btn {
     padding: 5px;
     border-radius: 4px;
+    font-family: 'Source Serif Pro', serif;;
 }
 
 .green-btn {
-    background-color: green;
+    background-color: rgb(27, 146, 27);
 }
 
 .red-btn {
-    background-color: red;
+    background-color: rgb(190, 30, 30);
+}
+
+.remove-btn {
+    background-color: rgba(0,0,0,0.2);
 }
 
 /* FOOTER */
