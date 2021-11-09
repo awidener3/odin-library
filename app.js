@@ -1,3 +1,7 @@
+
+
+//VARIABLE DECLARATIONS
+
 const bookContainer = document.getElementById('book-container');
 const addBookButton = document.getElementById('add-book-btn');
 const submitButton = document.getElementById('submit');
@@ -26,8 +30,30 @@ submitButton.onclick = function() {
     modal.style.display = 'none';
 }
 
+
+
+// LIBRARY AND LOCAL STORAGE HANDLING
+
 let myLibrary = [];
 
+function saveLibrary() {
+    localStorage.setItem('library', '');
+    localStorage.setItem('library', JSON.stringify(myLibrary));
+}
+
+function loadLibrary () {
+    // after page is loaded (window.onload)
+    if (localStorage.getItem('library') !== null) {
+        let storedLibrary = JSON.parse(localStorage.library);
+        myLibrary = storedLibrary;
+        updateDisplay();
+    }
+    // find stringified library and run it through JSON.Parse
+    
+    // let storedLibrary = JSON.parse(localStorage.library);
+    // set myLibrary to the parsed library
+    // myLibrary = storedLibrary;
+}
 
 
 // BOOK OBJECT HANDLING
@@ -62,8 +88,6 @@ function addBookToLibrary() {
     createCard(title, author, pages, isRead);
     
     myLibrary.push(newBook);
-
-    // save myLibrary to local storage
     saveLibrary();
 }
 
@@ -73,6 +97,7 @@ function deleteBook(card) {
         if (book.title == card.parentNode.dataset.title && book.author == card.parentNode.dataset.author) {
             let index = myLibrary.indexOf(book);
             myLibrary.splice(index, 1)
+            localStorage.setItem('library', JSON.stringify(myLibrary));
         }
     }
 }
@@ -95,23 +120,16 @@ function changeRead(btn) {
     }
 }
 
-
-// LOCAL STORAGE
-
-function saveLibrary() {
-    // clear current saved library
-    
-    // take current library and JSON.stringify it.
-
-    // set it into LocalStorage
+function updateDisplay() {
+    for (let book of myLibrary) {
+        createCard(book.title, book.author, book.pages, book.isRead);
+        // console.log(book);
+    }
 }
 
-function loadLibrary () {
-    // after page is loaded
-
-    // find stringified library and run it through JSON.Parse
-
-    // set myLibrary to the parsed library
+window.onload = function() {
+    loadLibrary();
+    // updateDisplay();
 }
 
 
