@@ -26,7 +26,7 @@ window.onclick = function(e) {
     }
 }
 submitButton.onclick = function() {
-    addBookToLibrary();
+    getInputValues();
     modal.style.display = 'none';
 }
 
@@ -35,6 +35,7 @@ submitButton.onclick = function() {
 // LIBRARY AND LOCAL STORAGE HANDLING
 
 let myLibrary = [];
+let storedLibrary = [];
 
 function saveLibrary() {
     localStorage.setItem('library', '');
@@ -42,17 +43,10 @@ function saveLibrary() {
 }
 
 function loadLibrary () {
-    // after page is loaded (window.onload)
     if (localStorage.getItem('library') !== null) {
-        let storedLibrary = JSON.parse(localStorage.library);
-        myLibrary = storedLibrary;
+        storedLibrary = JSON.parse(localStorage.library);
         updateDisplay();
     }
-    // find stringified library and run it through JSON.Parse
-    
-    // let storedLibrary = JSON.parse(localStorage.library);
-    // set myLibrary to the parsed library
-    // myLibrary = storedLibrary;
 }
 
 
@@ -67,23 +61,31 @@ function Book(title, author, pages, isRead) {
 
 Book.prototype.toggleRead = function() {
     switch(this.isRead) {
-        case 'true':
         case true:
             this.isRead = false;
+            saveLibrary();
             break;
-        case 'false':
         case false:
             this.isRead = true;
+            saveLibrary();
             break;
     }
 }
 
-function addBookToLibrary() {
+function getInputValues() {
     let title = document.getElementById('book-title').value;
     let author = document.getElementById('book-author').value;
     let pages = document.getElementById('book-pages').value;
     let isRead = document.getElementById('book-status').value;
-    
+    if (isRead === 'true') {
+        isRead = true;
+    } else {
+        isRead = false;
+    }
+    addBookToLibrary(title, author, pages, isRead);
+}
+
+function addBookToLibrary(title, author, pages, isRead) {
     const newBook = new Book(title, author, pages, isRead)
     createCard(title, author, pages, isRead);
     
@@ -103,6 +105,12 @@ function deleteBook(card) {
 }
 
 function changeRead(btn) {
+    for (let book of myLibrary) {
+        if (book.title == btn.parentNode.dataset.title && book.author == btn.parentNode.dataset.author) {
+            book.toggleRead();
+        }
+    }
+
     if (btn.classList.contains('green-btn')) {
         btn.classList.remove('green-btn');
         btn.classList.add('red-btn');
@@ -113,23 +121,16 @@ function changeRead(btn) {
         btn.textContent = 'Read';
     }
 
-    for (let book of myLibrary) {
-        if (book.title == btn.parentNode.dataset.title && book.author == btn.parentNode.dataset.author) {
-            book.toggleRead();
-        }
-    }
 }
 
 function updateDisplay() {
-    for (let book of myLibrary) {
-        createCard(book.title, book.author, book.pages, book.isRead);
-        // console.log(book);
+    for (let book of storedLibrary) {
+        addBookToLibrary(book.title, book.author, book.pages, book.isRead);
     }
 }
 
 window.onload = function() {
     loadLibrary();
-    // updateDisplay();
 }
 
 
@@ -159,7 +160,7 @@ function createCard(title, author, pages, isRead) {
         changeRead(this);
     }
 
-    if (isRead === 'true') {
+    if (isRead === true) {
         isRead = 'Read';
         readButton.classList.add('green-btn');
     } else {
@@ -180,22 +181,3 @@ function createCard(title, author, pages, isRead) {
     bookCard.appendChild(removeButton);
     bookContainer.appendChild(bookCard);
 }
-
-
-// // // DEBUG LAND // // // 
-
-// addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 512, true);
-// addBookToLibrary('Grit', 'Angela Duckworth', 422, false);
-// addBookToLibrary('Outliers', 'Malcom Gladwell', 143, false);
-
-
-// be sure to uncomment the console.log button in the HTML!
-
-// const consoleButton = document.getElementById('console');
-
-// consoleButton.addEventListener('click', function() {
-//     console.log('-------------');
-//     console.log('current library:');
-//     console.log(myLibrary);
-//     console.log('-------------');
-// })
