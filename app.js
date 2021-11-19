@@ -52,25 +52,27 @@ function loadLibrary () {
 
 // BOOK OBJECT HANDLING
 
-function Book(title, author, pages, isRead) {
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.isRead = isRead
-}
-
-Book.prototype.toggleRead = function() {
-    switch(this.isRead) {
-        case true:
-            this.isRead = false;
-            saveLibrary();
-            break;
-        case false:
-            this.isRead = true;
-            saveLibrary();
-            break;
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title,
+        this.author = author,
+        this.pages = pages,
+        this.isRead = isRead;
+    }
+    toggleRead() {
+        switch (this.isRead) {
+            case true:
+                this.isRead = false;
+                saveLibrary();
+                break;
+            case false:
+                this.isRead = true;
+                saveLibrary();
+                break;
+        }
     }
 }
+
 
 function getInputValues() {
     let title = document.getElementById('book-title').value;
