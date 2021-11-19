@@ -39,24 +39,24 @@ header > h1 {
 
 .add-book {
     display: flex;
-    margin-left: 20px;
-    padding-left: 20px;
+    margin-left: 30px;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .add-book-btn {
     border: 2px solid white;
     color: white;
-    padding: 1px;
     font-weight: bold;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 99vh;
     transition: all 0.2s;
 }
 
 .add-book-txt {
     margin-left: 5px;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 /* OVERLAY & BOOK FORM */
@@ -227,7 +227,7 @@ footer {
 
 button {
     background: none;
-    border: 2px solid white;
+    border: 1px solid white;
     color: white;
     font-size: 1rem;
     transition: all 0.2s;
