@@ -1,26 +1,32 @@
-// VARIABLE DECLARATIONS
-
 const bookContainer = document.getElementById('book-container');
-const addBookButton = document.getElementById('add-book-btn');
 const submitButton = document.getElementById('submit');
 const readButton = document.getElementById('read-btn');
 const modal = document.getElementById('overlay');
 const closeModal = document.getElementsByClassName('close')[0];
 
-// MODAL FUNCTIONS
+const dialog = document.querySelector('dialog');
+const showButton = document.querySelector('#addBook');
+const closeButton = document.querySelector('.close');
 
-addBookButton.onclick = function () {
-	document.getElementById('input-form').reset(); // reset form
-	modal.style.display = 'block'; // reveal modal
-};
-closeModal.onclick = function () {
-	modal.style.display = 'none';
-};
-window.onclick = function (e) {
-	if (e.target == modal) {
-		modal.style.display = 'none';
-	}
-};
+showButton.addEventListener('click', () => {
+	dialog.showModal();
+});
+closeButton.addEventListener('click', () => {
+	dialog.close();
+});
+
+// addBookButton.onclick = function () {
+// 	document.getElementById('input-form').reset(); // reset form
+// 	modal.style.display = 'block'; // reveal modal
+// };
+// closeModal.onclick = function () {
+// 	modal.style.display = 'none';
+// };
+// window.onclick = function (e) {
+// 	if (e.target == modal) {
+// 		modal.style.display = 'none';
+// 	}
+// };
 submitButton.onclick = function () {
 	getInputValues();
 	modal.style.display = 'none';
@@ -47,10 +53,7 @@ const loadLibrary = () => {
 
 class Book {
 	constructor(title, author, pages, isRead) {
-		(this.title = title),
-			(this.author = author),
-			(this.pages = pages),
-			(this.isRead = isRead);
+		(this.title = title), (this.author = author), (this.pages = pages), (this.isRead = isRead);
 	}
 	toggleRead() {
 		switch (this.isRead) {
@@ -90,10 +93,7 @@ const addBookToLibrary = (title, author, pages, isRead) => {
 const deleteBook = (card) => {
 	card.parentNode.parentNode.removeChild(card.parentNode);
 	for (let book of myLibrary) {
-		if (
-			book.title == card.parentNode.dataset.title &&
-			book.author == card.parentNode.dataset.author
-		) {
+		if (book.title == card.parentNode.dataset.title && book.author == card.parentNode.dataset.author) {
 			let index = myLibrary.indexOf(book);
 			myLibrary.splice(index, 1);
 			localStorage.setItem('library', JSON.stringify(myLibrary));
@@ -103,10 +103,7 @@ const deleteBook = (card) => {
 
 const changeRead = (btn) => {
 	for (let book of myLibrary) {
-		if (
-			book.title == btn.parentNode.dataset.title &&
-			book.author == btn.parentNode.dataset.author
-		) {
+		if (book.title == btn.parentNode.dataset.title && book.author == btn.parentNode.dataset.author) {
 			book.toggleRead();
 		}
 	}
