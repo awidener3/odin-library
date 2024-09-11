@@ -72,6 +72,14 @@ dialog[open] {
 		height: auto;
 	}
 
+	.close {
+		border: none;
+
+		&:hover {
+			background: none;
+		}
+	}
+
 	#input-form {
 		width: 100%;
 		display: flex;

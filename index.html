@@ -24,21 +24,36 @@
 
 				<form id="input-form" autocomplete="off">
 					<label for="book-title">Book Title</label>
-					<input id="book-title" type="text" placeholder="Enter a book title..." required />
+					<input
+						id="book-title"
+						name="book-title"
+						type="text"
+						placeholder="Enter a book title..."
+						minlength="1"
+						required
+					/>
 
 					<label for="book-author">Author</label>
-					<input id="book-author" type="text" placeholder="Enter an author..." required />
+					<input
+						id="book-author"
+						name="book-author"
+						type="text"
+						placeholder="Enter an author..."
+						minlength="1"
+						required
+					/>
 
 					<label for="book-pages">Pages</label>
-					<input id="book-pages" type="number" placeholder="0" min="0" required />
+					<input id="book-pages" name="book-pages" type="number" placeholder="0" min="0" required />
 
 					<label for="book-status">Status</label>
-					<select id="book-status" name="status-select" id="" required>
-						<option value="true">Read</option>
-						<option value="false">Not Read</option>
+					<select id="book-status" name="book-status" id="" required>
+						<option value="to-read">To Read</option>
+						<option value="in-progress">In progress</option>
+						<option value="read">Read</option>
 					</select>
 
-					<button id="submit" type="button" onclick="addBookToLibrary()">Submit</button>
+					<button id="submit" type="submit">Submit</button>
 				</form>
 			</dialog>
 
@@ -46,7 +61,7 @@
 		</main>
 
 		<footer class="footer">
-			<p><a href="https://github.com/awidener3">Alex Widener</a> &copy; 2021</p>
+			<p><a href="https://github.com/awidener3">Alex Widener,</a> 2024</p>
 			<div class="icon-credit">
 				Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from
 				<a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
